@@ -5,29 +5,8 @@
         <h2>DURR DENTAL TECHNICIAN APPOINTMENT</h2>
       </div>
       <div id="logo"></div>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#/home">Home <span class="sr-only">(current)</span></a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="#/new-appointment">New Appointment</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#/about">About</a>
-          </li>
-          
-          <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-        
-        </ul>
-      </div>
-     </nav>
-
+      <Menu />
+     
     <!-- <nav class="LayoutDefault__nav">
   
 
@@ -49,6 +28,7 @@
 </template>
 
 <script>
+import Menu from '../components/Menu'
 export default {
   name: `LayoutDefault`,
   data() {
@@ -56,12 +36,9 @@ export default {
       user: null,
     };
   },
-  created() {
-    // Simulate fetching user data.
-    setTimeout(() => {
-      this.user = { name: `John Doe` };
-    }, 2000);
-  },
+  components: {
+    Menu
+  }
 };
 </script>
 

@@ -1,8 +1,8 @@
 <template>
 
   <layout-default>
-    <div class="Home">
-       <appointment-list/>
+    <div>
+       <appointment-list class="app-list"/>
     </div>
   </layout-default>
 </template>
@@ -13,11 +13,6 @@ import AppointmentList from './Appointment/AppointmentList.vue';
 
 export default {
   name: `Home`,
-  data(){
-    return{
-      title: 'wow'
-    }
-  },
   components: {
     LayoutDefault,
     AppointmentList

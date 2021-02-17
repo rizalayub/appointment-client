@@ -7,12 +7,17 @@ import NewAppointment from "../components/Appointment/NewAppointment"
 
 Vue.use(Router);
 
+// const originalPush = Router.prototype.push
+// Router.prototype.push = function push(location) {
+//     return originalPush.call(this, location).catch(err => err)
+// }
+
 export default new Router({
 routes: [
     {
         path: '/',
         redirect: {
-            name: `home`
+            name: `login`
         }
     },
     {
@@ -27,12 +32,12 @@ routes: [
     },
     {
         path: "/new-appointment/:date",
-        name: "newappointment",
+        name: "newappointment-get-date",
         component: NewAppointment
     },
     {
         path: "/new-appointment/edit/:id",
-        name: "newappointment",
+        name: "newappointment-edit",
         component: NewAppointment
     },
     { 

@@ -1,7 +1,8 @@
 <template>
-  <layout-default>
+  <layout-default class="layout">
     <div class="text-left p-4">      
-       This application is for technician at Durr Dental to manage their appointment with the dentist around the world
+       <p>
+         This application is for technician at Durr Dental to manage their appointment with the dentist around the world</p>
     </div>
   </layout-default>
 </template>

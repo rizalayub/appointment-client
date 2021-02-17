@@ -17,42 +17,61 @@
             <input type="password" id="form1Example2" class="form-control" v-model="input.password" placeholder="Password" />
             
         </div>
-
-        
-
+        <div v-if="!successLogin" class="form-group err">
+            <label class="form-label" for="form1Example2">*Username or password is not match</label>            
+        </div>
         <!-- Submit button -->
         <button v-on:click="login()" class="btn btn-primary btn-block">Sign in</button>
 </form>
     </div>
 </template>
 <script>
+
+import { myLogin } from './helper.js'
+//import axios from 'axios'
 export default {
         name: 'Login',
         data() {
             return {
+                successLogin: true,
                 input: {
                     username: "",
                     password: ""
                 }
             }
         },
+        mixins: [myLogin],
+        mounted() {
+            this.checkLogIn()
+        },       
         methods: {
+            checkLogIn(){
+                if(localStorage.getItem('login' == true)){
+
+                    this.$router.replace("/home").catch(() => {})
+                }
+            },
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "home" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
-                } else {
-                    console.log("A username and password must be present");
-                }
+                    myLogin.login(this.input.username, this.input.password).then(data => {                        
+                         if(data.status == 1){
+                            localStorage.setItem('login',true)
+                            this.$router.replace("/home").catch(() => {})
+                        }
+                        else{
+                            this.successLogin = false
+                            localStorage.setItem('login',false)
+                        }
+                    })
+              }
             }
         }
     }
 </script>
 <style scoped>
+    .err{
+        color: red;
+    }
     #title {
         position: absolute;
         margin: auto 20%;
