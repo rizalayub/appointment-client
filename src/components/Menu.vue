@@ -24,18 +24,36 @@
         
         </ul>
       </div>
+      <span class="techName">Herzlich willkommen {{name}}</span>
      </nav>
 </template>
 <script>
 export default {
     name: 'Menu',
-
+    data() {
+      return {
+         name: '' 
+      }
+    },
+    created() {
+      this.checkName()
+    },
     methods: {
-    
+        checkName(){
+           this.name = localStorage.getItem('name')
+        },
         logOut(){
              localStorage.removeItem('login');
+              localStorage.removeItem('name');
+              localStorage.removeItem('id');
              this.$router.push("/login").catch(() => {})
         }
   }
 }
 </script>
+
+<style scoped>
+.techName {
+    float: right;
+}
+</style>

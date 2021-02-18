@@ -25,15 +25,16 @@ routes: [
         component: NewAppointment
     },
     {
-        path: "/new-appointment/:date",
-        name: "newappointment-get-date",
-        component: NewAppointment
-    },
-    {
-        path: "/new-appointment/edit/:id",
+        path: "/edit-appointment/edit/:id",
         name: "newappointment-edit",
         component: NewAppointment
     },
+    {
+        path: "/new-appointment/:date/:techid",
+        name: "newappointment-get-date",
+        component: NewAppointment
+    },
+    
     { 
         path: "/home", 
         name: `home`,

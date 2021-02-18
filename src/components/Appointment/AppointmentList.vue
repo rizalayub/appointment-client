@@ -88,7 +88,7 @@ export default {
   methods:{
     onRowSelected(items) {
        if(this.action == 'edit'){
-        this.$router.push({ path: `/new-appointment/edit/${items[0].id}` })
+        this.$router.push({ path: `/edit-appointment/edit/${items[0].id}` })
        }
         if(this.action == 'delete'){
           this.deleteAppointment(items[0].id)
@@ -142,7 +142,8 @@ export default {
         this.paginatedItems = []
         
         this.form.date = date.toLocaleString('sv-SE').split(' ')[0]
-        axios.get(`${process.env.VUE_APP_API_URL}/appointment/${this.form.date}`)      
+        let techId = localStorage.getItem("id")
+        axios.get(`${process.env.VUE_APP_API_URL}/appointment/loadAppointment/${this.form.date}/${techId}`)      
                 .then((res) => {
                   this.rows = res.data.length
                    this.formatResult(res)               

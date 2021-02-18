@@ -58,6 +58,8 @@ export default {
                     this.$login(this.input.username, this.input.password).then(data => {     
                          if(data.status == 1){
                             localStorage.setItem('login',true)
+                             localStorage.setItem('name',data.name)
+                             localStorage.setItem('id',data.technicianid)
                             this.$router.replace("/home").catch(() => {})
                         }
                         else{

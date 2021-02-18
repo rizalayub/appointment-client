@@ -135,7 +135,7 @@ export default {
                     });
             }
             else{
-                this.form.technicianid = 1
+                this.form.technicianid = localStorage.getItem('id')
                 this.form.date = this.form.formatDate.toLocaleString('sv-SE').split(' ')[0]
                 axios.post(`${process.env.VUE_APP_API_URL}/appointment`, this.form)
                     .then((res) => {
