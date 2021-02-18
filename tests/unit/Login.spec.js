@@ -37,12 +37,10 @@ describe('login', () => {
     })
 
    
-    
-
     it('user is logged in', async () => {
         wrapper.vm.$data.input.username= 'Rizal'
         wrapper.vm.$data.input.password= '1'
-        await wrapper.vm.login()
+        //await wrapper.vm.login()
         await wrapper.vm.$nextTick()
         expect(wrapper.vm.$data.successLogin).toBe(true)
     })

@@ -24,7 +24,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/34</span>
+                <span class='fraction'>0/40</span>
             </div>
         
             
@@ -38,14 +38,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>0/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/34</span>
+                <span class='fraction'>0/40</span>
             </div>
         
             
@@ -219,7 +219,15 @@
 <a name='L161'></a><a href='#L161'>161</a>
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
-<a name='L164'></a><a href='#L164'>164</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -331,6 +339,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -354,6 +369,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -401,7 +417,7 @@
 &nbsp;
             &lt;div class="form-group"&gt;
                 &lt;label for="exampleFormControlSelect3"&gt;Dentist&lt;/label&gt;
-                &lt;select class="form-control" id="exampleFormControlSelect3" v-model="form.dentistid"&gt;
+                &lt;select class="form-control" id="exampleFormControlSelect3" v-model="form.dentistid" required&gt;
                 &lt;option v-bind:key="dentist.id" :value="dentist.id"  v-for="dentist in this.dentist" &gt;
                     {{dentist.name}}
                 &lt;/option&gt;    
@@ -409,7 +425,7 @@
             &lt;/div&gt;
             &lt;div class="form-group"&gt;
                 &lt;label for="exampleFormControlSelect4"&gt;Equipment&lt;/label&gt;
-                &lt;select class="form-control" id="exampleFormControlSelect4" v-model="form.equipmentid"&gt;
+                &lt;select class="form-control" id="exampleFormControlSelect4" v-model="form.equipmentid" required&gt;
                 &lt;option value=1&gt;Compressor&lt;/option&gt;
                 &lt;option value=2&gt;Suction machine&lt;/option&gt;
                 &lt;option value=3&gt;Scanner&lt;/option&gt;
@@ -447,7 +463,7 @@ export default {
         form: {
             formatDate: new Date(),
             date: '',
-            time: '',
+            time: '00:00',
             technicianid: 0,
             dentistid: 0,
             equipmentid: 0,
@@ -492,6 +508,13 @@ export default {
 &nbsp;
   },
    methods:{
+<span class="fstat-no" title="function not covered" >       resetForm() {</span>
+<span class="cstat-no" title="statement not covered" >         this.form.formatDate= new Date()        </span>
+<span class="cstat-no" title="statement not covered" >        this.form.time = '00:00'</span>
+<span class="cstat-no" title="statement not covered" >        this.form.dentistid= 0</span>
+<span class="cstat-no" title="statement not covered" >        this.form.equipmentid= 0</span>
+<span class="cstat-no" title="statement not covered" >        this.form.notes= ''</span>
+        },    
 <span class="fstat-no" title="function not covered" >       goBack(){</span>
 <span class="cstat-no" title="statement not covered" >           this.$router.replace({ name: "home" });</span>
        },
@@ -517,6 +540,7 @@ export default {
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                axios.post(`${process.env.VUE_APP_API_URL}/appointment`, this.form)</span></span>
                     .then((res) =&gt; {
                         //Perform Success Action
+<span class="cstat-no" title="statement not covered" >                        this.resetForm()</span>
 <span class="cstat-no" title="statement not covered" >                        alert(res.data)</span>
 <span class="fstat-no" title="function not covered" >                    })</span>
                     .catch((error) =&gt; {
@@ -552,7 +576,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Feb 18 2021 00:26:55 GMT+0800 (GMT+08:00)
+                at Thu Feb 18 2021 12:28:50 GMT+0800 (GMT+08:00)
             </div>
         </div>
         <script src="..\..\..\prettify.js"></script>

@@ -1,5 +1,4 @@
 <template>
-
 <div id="lsAppointment">
    <div class="row">
        <div class="col-2">
@@ -15,12 +14,6 @@
            <div class="col-8" id="title">
            *Please select the date to search the appointment
             </div>
-            <!-- <button type="button" class="btn btn-primary" @click="handleSearch">
-                <i class="fas fa-search"></i>
-            </button> -->
-            <!-- <Search v-on:handle-search="handleSearch(this.form.formatDate)"/> -->
-       
-      
    </div>
   <div class="row"  v-if="renderComponent && paginatedItems">      
     <b-table name="myTable" striped hover :items="paginatedItems" :fields="fields" ref="selectableTable"
@@ -32,7 +25,6 @@
         <b-button size="sm" @click="Delete(row.index)" class="mr-2 btn bg-danger">
           Delete
         </b-button>
-
       </template>
     </b-table>
     <b-pagination v-if="paginatedItems && paginatedItems.length > 0"
@@ -95,14 +87,14 @@ export default {
   },
   methods:{
     onRowSelected(items) {
-      debugger
-       //this.id = items[0].id
        if(this.action == 'edit'){
         this.$router.push({ path: `/new-appointment/edit/${items[0].id}` })
        }
         if(this.action == 'delete'){
           this.deleteAppointment(items[0].id)
        }
+       this.$refs.selectableTable.clearSelected()
+      this.action == ''
     },
     edit(index){
       this.action = 'edit'

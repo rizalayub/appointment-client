@@ -108,6 +108,13 @@ export default {
 
   },
    methods:{
+       resetForm() {
+         this.form.formatDate= new Date()        
+        this.form.time = '00:00'
+        this.form.dentistid= 0
+        this.form.equipmentid= 0
+        this.form.notes= ''
+        },    
        goBack(){
            this.$router.replace({ name: "home" });
        },
@@ -133,6 +140,7 @@ export default {
                 axios.post(`${process.env.VUE_APP_API_URL}/appointment`, this.form)
                     .then((res) => {
                         //Perform Success Action
+                        this.resetForm()
                         alert(res.data)
                     })
                     .catch((error) => {
