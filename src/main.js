@@ -6,9 +6,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import Helper from './components/helper.js'
 
 Vue.config.productionTip = false
 
+Vue.use(Helper)
 Vue.use(BootstrapVue)
 
 Vue.use(BootstrapVueIcons)

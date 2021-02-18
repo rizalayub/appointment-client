@@ -16,15 +16,9 @@ export default new Router({
 routes: [
     {
         path: '/',
-        redirect: {
-            name: `login`
-        }
-    },
-    {
-        path: "/login",
-        name: "login",
-        component: Login
-    },
+        name: `newlogin`,
+        component: Login 
+    },    
     {
         path: "/new-appointment",
         name: "newappointment",
@@ -50,5 +44,10 @@ routes: [
         name: `about`,
         component: About 
     },
+    {
+        path: "/login",
+        name: "login",
+        component: Login
+    }
 ]
 })

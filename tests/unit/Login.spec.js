@@ -2,62 +2,71 @@ import { shallowMount, mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import Login from '../../src/components/Login.vue'
 import axios from 'axios'
+import Vue from 'vue'
+import VueLogin from '../../src/components/helper.js'
 
-// Mock the axios library
-jest.mock('axios')
+// Vue.use(Helper)
+// //Mock the axios library
+//jest.mock('')
+
 
 // Spy the console log
-global.console.log = jest.fn();
+//global.console.log = jest.fn();
 
 describe('login', () => {
     var wrapper = null
-    const $route = {
-        path: '/home'
-      }
+    // const $route = {
+    //     path: '/home'
+    //   }
     beforeEach(() => {
-      
+       
         //const localVue = createLocalVue()
-        //localVue.use(VueRouter)
-        //const router = new VueRouter()
-        wrapper = mount(Login, {
-            //localVue,
-            //router,
-            mocks: {
-                $route
-              }
+        //localVue.use(VueLogin)
+
+        wrapper = mount(Login)
+           
         })
-    })
+    
 
     afterEach(()=>{
         wrapper.destroy()
     })
 
-    it('checking all elements in place when component is created', () => {
+    it('render', () => {
+        expect(wrapper.exists()).toBe(true)
+    })
+
+   
+    
+
+    it('user is logged in', async () => {
+        wrapper.vm.$data.input.username= 'Rizal'
+        wrapper.vm.$data.input.password= '1'
+        await wrapper.vm.login()
+        await wrapper.vm.$nextTick()
+        expect(wrapper.vm.$data.successLogin).toBe(true)
+    })
+    // it('checking all elements in place when component is created', () => {
        
-        expect(wrapper.findAll('button').length).toEqual(1)
-        expect(wrapper.findAll('input').length).toEqual(2)
-        expect(wrapper.find('#title > h2').text()).toMatch('DURR DENTAL TECHNICIAN APPOINTMENT')
+    //     expect(wrapper.findAll('button').length).toEqual(1)
+    //     expect(wrapper.findAll('input').length).toEqual(2)
+    //     expect(wrapper.find('#title > h2').text()).toMatch('DURR DENTAL TECHNICIAN APPOINTMENT')
      
  
-    })
-    it('login button click success redirect to home',   async ()  => {
-       
-          wrapper.setData({
-              username: 'rizal',
-              password: '1ghh'
-          })
-          
-          expect(wrapper.findAll('button').length).toEqual(1)
-          await wrapper.vm.login()
+    // })
+    // it('login button click success redirect to home',   async ()  => {
+             
+    //       expect(wrapper.findAll('button').length).toEqual(1)
+    //       await wrapper.vm.login()
          
      
-     })
+    //  })
 
-     it('login button click not success error shown',   async ()  => {
+    //  it('login button click not success error shown',   async ()  => {
 
                 
     
      
-    })
+    // })
 
 })

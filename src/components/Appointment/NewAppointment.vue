@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <label for="exampleFormControlSelect3">Dentist</label>
-                <select class="form-control" id="exampleFormControlSelect3" v-model="form.dentistid">
+                <select class="form-control" id="exampleFormControlSelect3" v-model="form.dentistid" required>
                 <option v-bind:key="dentist.id" :value="dentist.id"  v-for="dentist in this.dentist" >
                     {{dentist.name}}
                 </option>    
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect4">Equipment</label>
-                <select class="form-control" id="exampleFormControlSelect4" v-model="form.equipmentid">
+                <select class="form-control" id="exampleFormControlSelect4" v-model="form.equipmentid" required>
                 <option value=1>Compressor</option>
                 <option value=2>Suction machine</option>
                 <option value=3>Scanner</option>
@@ -63,7 +63,7 @@ export default {
         form: {
             formatDate: new Date(),
             date: '',
-            time: '',
+            time: '00:00',
             technicianid: 0,
             dentistid: 0,
             equipmentid: 0,

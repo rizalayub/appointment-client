@@ -29,7 +29,7 @@
         <b-button size="sm" @click="edit(row.index)" class="mr-2 btn bg-primary">
           Edit
         </b-button>
-        <b-button size="sm" @click="Delete" class="mr-2 btn bg-danger">
+        <b-button size="sm" @click="Delete(row.index)" class="mr-2 btn bg-danger">
           Delete
         </b-button>
 
@@ -37,7 +37,7 @@
     </b-table>
     <b-pagination v-if="paginatedItems && paginatedItems.length > 0"
       v-model="currentPage"
-      :total-rows="rows"
+      :total-rows="items.length"
       :per-page="perPage"
       align="fill"
       size="sm"
@@ -60,21 +60,13 @@ export default {
    name: `AppointmentList`,
    data(){
        return {
-         weatherData: {
-        city: '',
-        weatherSummary: '',
-        weatherDescription: '',
-        currentTemperature: 0.0,
-        highTemperature: 0.0,
-        lowTemperature: 0.0
-      },
-       openweathermapApiKey: '',
+        id: 0,
         currentPage: 1,
         perPage: 5,
         fields: ["id",{key:'Date',sortable:false}, {key:'Time',sortable: true}, {key:'Doctor',sortable:true},'Actions'],
         items: [],
         paginatedItems: this.items,
-        rows: 0,
+        rows: 10,
         renderComponent: true,
         format: "dd.MM.yyyy",       
         form: {
@@ -82,7 +74,9 @@ export default {
             date: "",
         },
         dentist: [],
-        selected: []
+        selected: [],
+        action: '',
+        index: 0
        }
    },
    mounted () {
@@ -101,15 +95,45 @@ export default {
   },
   methods:{
     onRowSelected(items) {
-       this.$router.push({ path: `/new-appointment/edit/${items[0].id}` })
+      debugger
+       //this.id = items[0].id
+       if(this.action == 'edit'){
+        this.$router.push({ path: `/new-appointment/edit/${items[0].id}` })
+       }
+        if(this.action == 'delete'){
+          this.deleteAppointment(items[0].id)
+       }
     },
     edit(index){
+      this.action = 'edit'
       this.$refs.selectableTable.clearSelected()
       this.$refs.selectableTable.selectRow(index)
     },
-    Delete(){
-      console.log('delete')
+    Delete(index){
+      this.action = 'delete'
+      this.$refs.selectableTable.clearSelected()
+      this.$refs.selectableTable.selectRow(index)
+      this.index = index
+      
     },
+    deleteAppointment(id){
+      let items = this.items
+          axios.delete(`${process.env.VUE_APP_API_URL}/appointment/${id}`)      
+                .then((res) => {
+                    this.items = items.filter(x=>{
+                        return x.id != id
+                    })
+                    this.paginatedItems.splice(this.index,1)
+                    alert(res.data)                 
+                })
+                .catch((error) => {
+                    // error.response.status Check status code
+                    console.log(error)
+                }).finally(() => {
+                    //Perform action in always
+                });
+    },
+    
     paginate(page_size, page_number) {
       let itemsToParse = this.items;
       this.paginatedItems = itemsToParse.slice(
@@ -128,6 +152,7 @@ export default {
         this.form.date = date.toLocaleString('sv-SE').split(' ')[0]
         axios.get(`${process.env.VUE_APP_API_URL}/appointment/${this.form.date}`)      
                 .then((res) => {
+                  this.rows = res.data.length
                    this.formatResult(res)               
                 })
                 .catch((error) => {

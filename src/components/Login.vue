@@ -3,7 +3,7 @@
     <div id="title">
         <h2>DURR DENTAL TECHNICIAN APPOINTMENT</h2>
     </div>
-    <form class="lg">
+    <form class="lg" v-on:submit="login">
         <!-- Email input -->
         <div class="form-group">
             <label class="form-label" for="form1Example1">User Name</label>
@@ -21,13 +21,12 @@
             <label class="form-label" for="form1Example2">*Username or password is not match</label>            
         </div>
         <!-- Submit button -->
-        <button v-on:click="login()" class="btn btn-primary btn-block">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
 </form>
     </div>
 </template>
 <script>
 
-import { myLogin } from './helper.js'
 //import axios from 'axios'
 export default {
         name: 'Login',
@@ -40,10 +39,13 @@ export default {
                 }
             }
         },
-        mixins: [myLogin],
+        // mixins: [myLogin],
         mounted() {
-            this.checkLogIn()
-        },       
+            //this.checkLogIn()
+        }, 
+        created(){
+           //this.checkLogIn()
+        },      
         methods: {
             checkLogIn(){
                 if(localStorage.getItem('login' == true)){
@@ -51,9 +53,9 @@ export default {
                     this.$router.replace("/home").catch(() => {})
                 }
             },
-            login() {
-                if(this.input.username != "" && this.input.password != "") {
-                    myLogin.login(this.input.username, this.input.password).then(data => {                        
+            login: function(event){
+                if(this.input.username != "" && this.input.password != "") {                   
+                    this.$login(this.input.username, this.input.password).then(data => {     
                          if(data.status == 1){
                             localStorage.setItem('login',true)
                             this.$router.replace("/home").catch(() => {})
@@ -63,7 +65,9 @@ export default {
                             localStorage.setItem('login',false)
                         }
                     })
-              }
+                }
+                event.preventDefault()
+
             }
         }
     }

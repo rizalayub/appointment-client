@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">27.27% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/10</span>
+                <span class='fraction'>3/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>3/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">27.27% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/10</span>
+                <span class='fraction'>3/11</span>
             </div>
         
             
@@ -196,49 +196,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -283,7 +283,7 @@
     &lt;div id="title"&gt;
         &lt;h2&gt;DURR DENTAL TECHNICIAN APPOINTMENT&lt;/h2&gt;
     &lt;/div&gt;
-    &lt;form class="lg"&gt;
+    &lt;form class="lg" v-on:submit="login"&gt;
         &lt;!-- Email input --&gt;
         &lt;div class="form-group"&gt;
             &lt;label class="form-label" for="form1Example1"&gt;User Name&lt;/label&gt;
@@ -297,65 +297,65 @@
             &lt;input type="password" id="form1Example2" class="form-control" v-model="input.password" placeholder="Password" /&gt;
             
         &lt;/div&gt;
-&nbsp;
-        
-&nbsp;
+        &lt;div v-if="!successLogin" class="form-group err"&gt;
+            &lt;label class="form-label" for="form1Example2"&gt;*Username or password is not match&lt;/label&gt;            
+        &lt;/div&gt;
         &lt;!-- Submit button --&gt;
-        &lt;button v-on:click="login()" class="btn btn-primary btn-block"&gt;Sign in&lt;/button&gt;
+        &lt;button type="submit" class="btn btn-primary btn-block"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
     &lt;/div&gt;
 &lt;/template&gt;
-&nbsp;
 &lt;script&gt;
-import axios from 'axios';
+&nbsp;
+//import axios from 'axios'
 export default {
         name: 'Login',
         data() {
             return {
+                successLogin: true,
                 input: {
                     username: "",
                     password: ""
                 }
             }
         },
+        // mixins: [myLogin],
+        mounted() {
+            //this.checkLogIn()
+        }, 
+        created(){
+           //this.checkLogIn()
+        },      
         methods: {
-            login() {
-<span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="if path not taken" >I</span>                if(this.input.username != "" &amp;&amp; this.input.password != "") {</span>
-                    // if(this.input.username == this.$parent.mockAccount.username &amp;&amp; this.input.password == this.$parent.mockAccount.password) {
-                    //     this.$emit("authenticated", true);
-                    //     this.$router.replace({ name: "home" });
-                    // } else {
-                    //     console.log("The username and / or password is incorrect");
-                    // }
-<span class="cstat-no" title="statement not covered" >                    var data = {</span>
-                        username : this.input.username,
-                        password : this.input.password
-                    }
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                    axios.post(`${process.env.VUE_APP_API_URL}/technician/login`, data)</span></span>
-                    .then((result) =&gt; {
-                        //Perform Success Action
-                          //this.$emit("authenticated", true);
-<span class="cstat-no" title="statement not covered" >                          if(result.data.status == 1){</span>
-<span class="cstat-no" title="statement not covered" >                            this.$router.replace({ name: "home" });</span>
-                          }
-                          else{
-<span class="cstat-no" title="statement not covered" >                              alert('Password not match')</span>
-                          }
-<span class="fstat-no" title="function not covered" >                    })</span>
-                    .catch((error) =&gt; {
-                        // error.response.status Check status code
-<span class="cstat-no" title="statement not covered" >                        alert(error)</span>
-<span class="fstat-no" title="function not covered" >                    }).finally(() =&gt; {</span>
-                        //Perform action in always
-                    });
-                } else {
-                    console.log("A username and password must be present");
+<span class="fstat-no" title="function not covered" >            checkLogIn(){</span>
+<span class="cstat-no" title="statement not covered" >                if(localStorage.getItem('login' == true)){</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                    this.$router.replace("/home").catch(() =&gt; {})</span></span>
                 }
+            },
+            login: function(event){
+<span class="missing-if-branch" title="else path not taken" >E</span>                if(this.input.username != "" &amp;&amp; this.input.password != "") {                   
+<span class="fstat-no" title="function not covered" >                    this.$login(this.input.username, this.input.password).then(data =&gt; {     </span>
+<span class="cstat-no" title="statement not covered" >                         if(data.status == 1){</span>
+<span class="cstat-no" title="statement not covered" >                            localStorage.setItem('login',true)</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                            this.$router.replace("/home").catch(() =&gt; {})</span></span>
+                        }
+                        else{
+<span class="cstat-no" title="statement not covered" >                            this.successLogin = false</span>
+<span class="cstat-no" title="statement not covered" >                            localStorage.setItem('login',false)</span>
+                        }
+                    })
+                }
+<span class="cstat-no" title="statement not covered" >                event.preventDefault()</span>
+&nbsp;
             }
         }
     }
 &lt;/script&gt;
 &lt;style scoped&gt;
+    .err{
+        color: red;
+    }
     #title {
         position: absolute;
         margin: auto 20%;
@@ -396,7 +396,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Feb 17 2021 12:34:34 GMT+0800 (GMT+08:00)
+                at Thu Feb 18 2021 00:26:55 GMT+0800 (GMT+08:00)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>
